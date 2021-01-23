@@ -34,6 +34,7 @@ I have modified these two important files, recognizer.py and robocup.launch, inc
   
 Now we can launch the test node  
 $ roslaunch pocketsphinx robocup.launch  
+test1
   
 ### Download 
 Create a new APP, and download the SDK voice packet with the function: Speech dictation and online speech synthesis.  
@@ -60,13 +61,22 @@ picture4
 
 ### speech recognition and voice control
 
-your can reate “robot_voice” package by yourself  
-$ cd ~/catkin_ws/src/  
-$ catkin_create_pkg robot_ voice std_ msgs roscpp rospy  
-$ cd ..  
-$ catkin_make  
-$ source ~/catkin_ws/devel/setup.bash  
-or just git clone  
+add “robot_voice” package to your work space ~/catkin_ws/src  
 change the APPID in .c and .cpp code to your own APPID, at ~/catkin_ws/src/robot_voice/src/  
 ctrl + f can help you to search the key word  
+$ cd ~/catkin_ws && catkin_make  
+  
+let's start to recognise our voice  
+$ roscore
+$ rosrun robot_voice iat_publish  
+$ rostopic pub /voiceWakeup  std_msgs/String  "data: 'anny string'"  
+we have changed iat_pubish.py, so you don't need to wake it up, iat_publish will keep recording 
+$ rostopic echo /voiceWords  
+picture5
 
+I have written a simple voice_teleop node, subscribe the topic "voiceWords". which is published by iat_publish. Than publish control commands '/turtle1/cmd_vel' recording to the Text information.  
+Now we can control the turtlesim node  
+$ roscore    
+$ rosrun robot_voice iat_publish    
+$ rosrun robot_voice voice_teleop.py  
+$ rosrun turtlesim turtlesim_node  
