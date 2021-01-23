@@ -34,16 +34,39 @@ I have modified these two important files, recognizer.py and robocup.launch, inc
   
 Now we can launch the test node  
 $ roslaunch pocketsphinx robocup.launch  
+  
+### Download 
+Create a new APP, and download the SDK voice packet with the function: Speech dictation and online speech synthesis.  
+`Remeber your APPID, it is very important and will be used in later work`   
+extract the packet Linux_iat1227_tts_online1227_600b81a1 to your home directory  
+find the file "iat_online_record_sample" at ~/Linux_iat1227_tts_online1227_600b81a1/samples/   
+change the file path in Makefile and 64bit_make.sh  
+picture1  
+picture2  
+$ cd ~/Linux_iat1227_tts_online1227_600b81a1/samples/iat_online_record_sample  
+$ source 64bit_make.sh   
+$ make  
+picture3  
+
+$ cd ~/Linux_iat1227_tts_online1227_600b81a1/libs/x64   
+$ sudo cp libmsc.so /usr/lib/  
+$ sudo ldconfig  
+  
+Now we can run the test demo    
+$ cd ~/Linux_iat1227_tts_online1227_600b81a1/bin  
+$ ./iat_online_record_sample  
+picture4  
+
 
 ### speech recognition and voice control
 
-Create “robot_voice” package
-$ cd ~/catkin_ws/src/
-$ catkin_create_pkg robot_ voice std_ msgs roscpp rospy
-
-$ cd ..
-$ catkin_make
-$ source ~/catkin_ws/devel/setup.bash
-
-
+your can reate “robot_voice” package by yourself  
+$ cd ~/catkin_ws/src/  
+$ catkin_create_pkg robot_ voice std_ msgs roscpp rospy  
+$ cd ..  
+$ catkin_make  
+$ source ~/catkin_ws/devel/setup.bash  
+or just git clone  
+change the APPID in .c and .cpp code to your own APPID, at ~/catkin_ws/src/robot_voice/src/  
+ctrl + f can help you to search the key word  
 
