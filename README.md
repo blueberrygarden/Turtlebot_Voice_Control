@@ -1,5 +1,5 @@
-# Demos: speech recognition and voice control of Turtlebot3_waffle_pi
-`Remind:make sure your PC or robot has been equipped with Microphone, and working well.`
+# Demo: Speech recognition and voice control of Turtlebot3_waffle_pi
+`Remind:make sure your PC or robot has been equipped with Microphone, and works well.`
 ### Usage
 
 ### Preparation
