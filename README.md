@@ -1,6 +1,20 @@
 # Demo: Speech recognition and voice control of Turtlebot3_waffle_pi
 `Remind:make sure your PC or robot has been equipped with Microphone, and works well.`
 ### Usage
+[remote PC]  
+$ cd ~/catkin_ws/src  
+$ git clone   
+$ cd ..  
+$ catkin_make  
+$ roscore  
+[Robot]  
+$ roslaunch turtlebot3_bringup turtlebot3_tobot.launch  
+[remote PC]  
+$ rosrun robot_voice iat_publish  
+$ roslaunch voice_robot turtlebot3_teleop_voice.launch  
+  
+Now you can speak and control your robot!  
+
 
 ### Preparation
 
@@ -70,13 +84,15 @@ let's start to recognise our voice
 $ roscore
 $ rosrun robot_voice iat_publish  
 $ rostopic pub /voiceWakeup  std_msgs/String  "data: 'anny string'"  
-we have changed iat_pubish.py, so you don't need to wake it up, iat_publish will keep recording 
+I have invalidate the wakeup function in wakeupiat_pubish.py, so you don't need to publish a string topic to wake it up, iat_publish will keep recording. If you still want to use this function, just delete the "void wake()" function.  
 $ rostopic echo /voiceWords  
 picture5
 
-I have written a simple voice_teleop node, subscribe the topic "voiceWords". which is published by iat_publish. Than publish control commands '/turtle1/cmd_vel' recording to the Text information.  
-Now we can control the turtlesim node  
+I have written a simple voice_teleop node to subscribe the topic "voiceWords". which is published by iat_publish. Than publish control commands to '/turtle1/cmd_vel' recording to the Text information.  
+Now we can control the turtlesim node just for fun.
 $ roscore    
 $ rosrun robot_voice iat_publish    
 $ rosrun robot_voice voice_teleop.py  
 $ rosrun turtlesim turtlesim_node  
+  
+How to control the turtlebot3_waffle_pi? I have written two new scripts, they are turtlebot3_teleop_voice.py and turtlebot3_teleop_voice.launch, which can control the velocity of robot very smoothly.  
