@@ -12,7 +12,7 @@ $ roslaunch turtlebot3_bringup turtlebot3_tobot.launch
 [remote PC]  
 $ rosrun robot_voice iat_publish  
 $ roslaunch voice_robot turtlebot3_teleop_voice.launch  
-  
+![Image text](https://github.com/blueberrygarden/SIL_Tutor_Demo/blob/main/Pictures/picture6.png)  
 Now you can speak and control your robot!  
 
 
@@ -48,7 +48,7 @@ I have modified these two important files, recognizer.py and robocup.launch, inc
   
 Now we can launch the test node  
 $ roslaunch pocketsphinx robocup.launch  
-test1
+![Image text](https://github.com/blueberrygarden/SIL_Tutor_Demo/blob/main/Pictures/Test1.png)
   
 ### Download 
 Create a new APP, and download the SDK voice packet with the function: Speech dictation and online speech synthesis.  
@@ -56,12 +56,12 @@ Create a new APP, and download the SDK voice packet with the function: Speech di
 extract the packet Linux_iat1227_tts_online1227_600b81a1 to your home directory  
 find the file "iat_online_record_sample" at ~/Linux_iat1227_tts_online1227_600b81a1/samples/   
 change the file path in Makefile and 64bit_make.sh  
-picture1  
-picture2  
+![Image text](https://github.com/blueberrygarden/SIL_Tutor_Demo/blob/main/Pictures/picture1.png)  
+![Image text](https://github.com/blueberrygarden/SIL_Tutor_Demo/blob/main/Pictures/picture2.png)  
 $ cd ~/Linux_iat1227_tts_online1227_600b81a1/samples/iat_online_record_sample  
 $ source 64bit_make.sh   
 $ make  
-picture3  
+![Image text](https://github.com/blueberrygarden/SIL_Tutor_Demo/blob/main/Pictures/picture3.png)
 
 $ cd ~/Linux_iat1227_tts_online1227_600b81a1/libs/x64   
 $ sudo cp libmsc.so /usr/lib/  
@@ -70,7 +70,7 @@ $ sudo ldconfig
 Now we can run the test demo    
 $ cd ~/Linux_iat1227_tts_online1227_600b81a1/bin  
 $ ./iat_online_record_sample  
-picture4  
+![Image text](https://github.com/blueberrygarden/SIL_Tutor_Demo/blob/main/Pictures/picture4.png) 
 
 
 ### speech recognition and voice control
@@ -86,7 +86,7 @@ $ rosrun robot_voice iat_publish
 $ rostopic pub /voiceWakeup  std_msgs/String  "data: 'anny string'"  
 I have invalidate the wakeup function in wakeupiat_pubish.py, so you don't need to publish a string topic to wake it up, iat_publish will keep recording. If you still want to use this function, just delete the "void wake()" function.  
 $ rostopic echo /voiceWords  
-picture5
+![Image text](https://github.com/blueberrygarden/SIL_Tutor_Demo/blob/main/Pictures/picture5.png)
 
 I have written a simple voice_teleop node to subscribe the topic "voiceWords". which is published by iat_publish. Than publish control commands to '/turtle1/cmd_vel' recording to the Text information.  
 Now we can control the turtlesim node just for fun.
