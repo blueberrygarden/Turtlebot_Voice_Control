@@ -3,7 +3,8 @@
 ### Usage
 [remote PC]  
 $ cd ~/catkin_ws/src  
-$ git clone   
+$ git clone https://github.com/blueberrygarden/Turtlebot_Voice_Control.git  
+$ sudo cp libmsc.so /usr/lib/  
 $ cd ..  
 $ catkin_make  
 $ roscore  
